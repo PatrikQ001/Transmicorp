@@ -1,0 +1,21 @@
+
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+  
+  <div class="main-wrapper">
+      <h1>Registrar Unidad Vehicular</h1>
+      <div class="form-wrapper">
+          <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit">Crear Unidad</button>
+          </form>
+      </div>
+  </div>
+
+   <!-- Enlace al archivo CSS -->
+   <link rel="stylesheet" type="text/css" href="{% static 'css/formulario.css' %}">
+
+{% endblock %}

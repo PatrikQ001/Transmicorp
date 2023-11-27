@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="page-container">
+      <a class="back-button" href="{% url 'lista_notificaciones' %}">Volver a la Lista</a>
+      <div class="view-order">
+        <h2>Detalles de la Notificacion</h2>
+        <div class="order-details">
+            <div class="column">
+                <p><strong>Evento:</strong> {{ notificacion.Evento }}</p>
+                <p><strong>Descripcion:</strong> {{ notificacion.Descripcion }}</p>
+             
+                <!-- Mostrar otros campos del modelo aquí -->
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="page-container">
+        <div class="center-container">
+            <div class="view-order">
+                <h2>Datos del Cliente</h2>
+                <div class="order-details">
+                    <div class="column">
+                        <p><strong>Tipo RuC:</strong> {{ cliente.Tipo_Ruc }}</p>
+                        <p><strong>RuC Cliente:</strong> {{ cliente.Ruc_Clientes }}</p>
+                        <p><strong>Nombre :</strong> {{ cliente.Cliente_Nombre }}</p>
+                        <p><strong>Apellido :</strong> {{ cliente.Cliente_Apellido }}</p>
+                        <p><strong>Telefono:</strong> {{ cliente.Cliente_telefono }}</p>
+                        <p><strong>Email:</strong> {{ cliente.Cliente_email }}</p>
+                        <p><strong>Direccion:</strong> {{ cliente.Cliente_direccion }}</p>
+                        <p><strong>Valoracion:</strong> {{ cliente.Valoracion }}</p>
+                        <p><strong>Tipo de Mercaderia:</strong> {{ cliente.Tipo_Mercaderia }}</p>
+                        <!-- Mostrar otros campos del modelo aquí -->
+                    </div>
+                </div>
+            </div>
+            <div class="center-button">
+                <a class="back-button" href="{% url 'lista_clientes' %}">Volver a la Lista</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+{% endblock %}

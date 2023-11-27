@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+ <h2>Listado de Unidades</h2>
+ <table class="table">
+   <thead>
+     <tr>
+       
+       <th>Placa</th>
+       <th>Unidad</th>
+       <th>Capacidad de Carga</th>
+       <th>Estado de la Unidad</th>
+       <th>Observaciones</th>
+       <th colspan="3" style="text-align: center;">Acciones</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for uni in unidad %}
+       <tr>
+         
+        
+         <td>{{ uni.Placa_Vehiculo }}</td>
+         <td>{{ uni.Tipo_de_Vehiculo }}</td>
+         <td>{{ uni.Capacidad_Carga }}</td>
+         <td>{{ uni.Estado_unidad }}</td>
+         <td>{{ uni.Observaciones }}</td>
+
+         <td>
+           <a class="btn-ver" href="{% url 'ver_unidad' uni.pk %}">Ver detalles</a>
+         </td>
+         <td>
+           <a class="btn-editar" href="{% url 'editar_unidad' uni.pk %}">Editar</a>
+         </td>
+         <td>
+           <a class="btn-eliminar" href="{% url 'eliminar_unidad' uni.pk %}">Eliminar</a>
+         </td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+
+ <!-- Botón para crear una nueva UNIDAD -->
+
+
+<a class="btn-crear" href="{% url 'crear_unidad' %}">Crear Nueva Unidad</a>
+
+
+
+
+ <!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista.css' %}">
+
+
+{% endblock %}
+

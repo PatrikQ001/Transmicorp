@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+ <h2>Listado de Notificaciones</h2>
+ <table class="table">
+   <thead>
+     <tr>
+       <th>Id Notificaciones</th>
+       <th>Evento</th>
+       <th>Descripcion</th>
+
+       <th colspan="3" style="text-align: center;">Acciones</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for notificacion in notificacion %}
+       <tr>
+       	 <td>{{ notificacion.Id_notificaciones}}</td>
+         <td>{{ notificacion.Evento }}</td>
+         <td>{{ notificacion.Descripcion }}</td>
+
+         <td>
+           <a class="btn-ver" href="{% url 'ver_notificaciones' notificacion.pk %}">Ver detalles</a>
+         </td>
+         <td>
+           <a class="btn-editar" href="{% url 'editar_notificaciones' notificacion.pk %}">Editar</a>
+         </td>
+         <td>
+           <a class="btn-eliminar" href="{% url 'eliminar_notificaciones' notificacion.pk %}">Eliminar</a>
+         </td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+ <!-- Botón para crear nueva orden de trabajo -->
+
+
+<a class="btn-crear" href="{% url 'crear_notificaciones' %}">Crear Nueva Notificacion</a>
+ <!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista.css' %}">
+
+
+ {% endblock %}

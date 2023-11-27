@@ -1,0 +1,171 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          
+            height: 100vh;
+        }
+
+        .form-container {
+            width: 600px;
+            padding: 20px;
+            border: 1px solid #c44747;
+            border-radius: 10px;
+            text-align: left;
+            background-color: #d3e2e9;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: calc(100% - 12px);
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .form-group.col-50 {
+            float: left;
+            width: 45%;
+            margin-right: 5%;
+    
+        }
+
+        .form-group.col-100 {
+            width: 100%;
+
+        }
+
+        .center-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .center-button button {
+            padding: 10px 20px;
+            background-color: #448aff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .center-button button:hover {
+            background-color: #4586a0;
+        }
+        .cheackbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .cheackbox-container span {
+            margin-right: 10px;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container order-form">
+        <div class="form-container">
+            <h2>Orden de Trabajo</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group col-50">
+                    <label for="{{ form.Cliente.id_for_label }}">Nombre Cliente:</label>
+                    {{ form.Cliente }}
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Id_Conductor.id_for_label }}">Nombre Conductor:</label>
+                    {{ form.Id_Conductor }}
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Origen.id_for_label }}">Origen:</label>
+                    {{ form.Origen }}
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Destino.id_for_label }}">Destino:</label>
+                    {{ form.Destino }}
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Detalles.id_for_label }}">Detalles:</label>
+                    {{ form.Detalles }}
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Id_Vehiculo.id_for_label }}">Placa del Vehículo:</label>
+                    {{ form.Id_Vehiculo }}
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+        
+                <div class="form-group col-50">
+                    <label for="{{ form.Peso.id_for_label }}">Peso(Toneladas):</label>
+                    {{ form.Peso }}
+               
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Tipo.id_for_label }}">Tipo de Mercancia:</label>
+                    {{ form.Tipo }}
+                
+
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Fecha_Emision.id_for_label }}">Fecha de Emisión:</label>
+                    {{ form.Fecha_Emision }}
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Monto_Cotizacion.id_for_label }}">Monto de Cotización:</label>
+                    {{ form.Monto_Cotizacion }}
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Estado.id_for_label }}">Estado:</label>
+                    <div class="cheackbox-container">
+                        {{ form.Estado }}
+                        <span> Marcar si la OT ha sido aceptada</span>
+                    </div>
+                    
+                </div>
+                <div class="form-group col-50">
+                    <label for="{{ form.Tipo_orden_de_trabajo.id_for_label }}">Tipo de Orden de Trabajo:</label>
+                    {{ form.Tipo_orden_de_trabajo }}
+                </div>
+                <div class="form-group col-100">
+                    <label for="{{ form.Descripcion.id_for_label }}">Descripción:</label>
+                    {{ form.Descripcion }}
+                </div>
+                <div class="center-button col-100">
+                    <button type="submit">Crear Orden de Trabajo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}
+

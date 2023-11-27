@@ -1,0 +1,53 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+ <h2>Listado de Gastos</h2>
+ <table class="table">
+   <thead>
+     <tr>
+       <th>Código de la Boleta</th>
+       <th>Tipo de Gasto</th>
+       <th>Area de Gasto</th>
+       <th>Descripción</th>
+       <th>Monto Gastado</th>
+       <th>Fecha de la Boleta</th>
+       <th colspan="3" style="text-align: center;">Acciones</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for x in gasto %}
+       <tr>
+       	 <td>{{ x.Codigo_de_boleta}}</td>
+         <td>{{ x.Tipo_de_gasto }}</td>
+         <td>{{ x.Area_de_gasto }}</td>
+         <td>{{ x.Descripcion }}</td>
+         <td>{{ x.Monto_gastado }}</td>
+         <td>{{ x.Fecha_boleta }}</td>
+         <td>
+           <a class="btn-ver" href="{% url 'ver_gasto' x.pk %}">Ver detalles</a>
+         </td>
+         <td>
+           <a class="btn-editar" href="{% url 'editar_gasto' x.pk %}">Editar</a>
+         </td>
+         <td>
+           <a class="btn-eliminar" href="{% url 'eliminar_gasto' x.pk %}">Eliminar</a>
+         </td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+ <!-- Botón para crear nueva orden de trabajo -->
+
+
+<a class="btn-crear" href="{% url 'crear_gasto' %}">Crear Nuevo Gasto</a>
+
+
+
+
+ <!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista.css' %}">
+
+
+{% endblock %}

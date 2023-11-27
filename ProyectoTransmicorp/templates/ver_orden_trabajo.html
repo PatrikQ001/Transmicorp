@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+   <div class="page-container">
+     <div class="view-order" id="print-content">
+       <h2>Detalles de la Orden de Trabajo {{ orden_trabajo.id }}</h2>
+       <div class="order-details">
+           <div class="column">
+           
+               <p><strong>Nombre Completo del Cliente:</strong> {{ orden_trabajo.Cliente }}</p>
+               <p><strong>Nombre del Conductor:</strong> {{ orden_trabajo.Id_Conductor }}</p>
+               <p><strong>Origen:</strong> {{ orden_trabajo.Origen }}</p>
+               <p><strong>Fecha de Emision:</strong> {{ orden_trabajo.Fecha_Emision }}</p>
+               <p><strong>Tipo de Orden de trabajo</strong> {{ orden_trabajo.Tipo_orden_de_trabajo }}</p>
+               <p><strong>Detalles:</strong> {{ orden_trabajo.Detalles }}</p>
+               <p><strong>Descripcion:</strong> {{ orden_trabajo.Descripcion }}</p>
+               
+               <!-- Mostrar otros campos del modelo aquí -->
+           </div>
+           <div class="column">
+               <p><strong>Placa del Vehiculo:</strong> {{ orden_trabajo.Id_Vehiculo }}</p>
+               <p><strong>Monto de Cotizacion:</strong> {{ orden_trabajo.Monto_Cotizacion }} soles</p>
+               <p><strong>Destino:</strong> {{ orden_trabajo.Destino }}</p>
+               <p><strong>Peso(Toneladas):</strong> {{ orden_trabajo.Peso }}</p>
+               <p><strong>Estado:</strong> {{ orden_trabajo.Estado }}</p>
+
+               <!-- Mostrar otros campos del modelo aquí -->
+           </div>
+       </div>
+       <a class="back-button" href="{% url 'lista_ordenes_trabajo' %}" style="margin-right: 100px;">Volver a la Lista</a>
+       <button class="imprimir-button" onclick="imprimirDetalles()">Imprimir</button>
+     </div>  
+   </div>
+
+   <!-- Enlace al archivo CSS -->
+   <link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+
+   <script>
+    var rutaCSS = "{% static 'css/ver_orden.css' %}";
+
+    function imprimirDetalles() {
+        var ventanaImpresion = window.open('', '', 'width=600,height=600');
+        ventanaImpresion.document.write('<html><head><title>Detalles de la Orden de Trabajo</title>');
+        ventanaImpresion.document.write('<link rel="stylesheet" href="' + rutaCSS + '" type="text/css" media="print">');
+        ventanaImpresion.document.write('</head><body>');
+        ventanaImpresion.document.write('<div class="view-order" id="print-content">');
+        ventanaImpresion.document.write(document.getElementById('print-content').innerHTML);
+        ventanaImpresion.document.write('</div>');
+        ventanaImpresion.document.write('</body></html>');
+        ventanaImpresion.document.close();
+        ventanaImpresion.print();
+    }
+
+
+   </script>
+{% endblock %}
+

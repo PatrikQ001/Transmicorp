@@ -1,0 +1,104 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="page-container">
+        <div class="view-order">
+            <h1>Detalles del empleado/a "{{ empleados.Nombre }}"</h1>
+            <div>
+                <p> </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <div style="width: calc(50% - 10px); margin-bottom: 20px; box-sizing: border-box;">
+                    <div class="form-field">
+                        <label>Nombre: {{ empleados.Nombre }}</label>
+                    </div>
+                    <div class="form-field">
+                        <label>DNI: {{ empleados.DNI }}</label>
+                    </div>
+                    <div class="form-field">
+                        <label>Correo: {{ empleados.Correo }}</label>
+                    </div>
+                    <div class="form-field">
+                        <label>Tipo de Licencia: 
+                            {% if empleados.Licencia == '1' %}
+                                A-I
+                            {% elif empleados.Licencia == '2' %}
+                                A-IIa
+                            {% elif empleados.Licencia == '3' %}
+                                A-IIb
+                            {% elif empleados.Licencia == '4' %}
+                                A-IIIa
+                            {% elif empleados.Licencia == '5' %}
+                                A-IIIb
+                            {% elif empleados.Licencia == '6' %}
+                                A-IIIc
+                            {% elif empleados.Licencia == '7' %}
+                                B-I
+                            {% elif empleados.Licencia == '8' %}
+                                B-IIa
+                            {% elif empleados.Licencia == '9' %}
+                                B-IIb
+                            {% elif empleados.Licencia == '10' %}
+                                B-IIc
+                            {% else %}
+                                {{ empleados.Licencia }}
+                            {% endif %}
+                        </label>
+                    </div>
+                </div>
+                <div style="width: calc(50% - 10px); margin-bottom: 20px; box-sizing: border-box;">
+                    <div class="form-field">
+                        <label>Apellidos: {{ empleados.Apellido }}</label>
+                    </div>
+                    <div class="form-field">
+                        <label>Teléfono: {{ empleados.Telefono }}</label>
+                    </div>
+                    <div class="form-field">
+                        <label>Rendimiento: 
+                        
+                            {% if empleados.Rendimiento == '1' %}
+                                Excelente
+                            {% elif empleados.Rendimiento == '2' %}
+                                Bueno
+                            {% elif empleados.Rendimiento == '3' %}
+                                Regular
+                            {% elif empleados.Rendimiento == '4' %}
+                                Necesita Mejorar
+                            {% elif empleados.Rendimiento == '5' %}
+                                Deficiente
+                            {% else %}
+                                {{ empleados.Rendimiento }}
+                            {% endif %}
+                        </label>
+                    </div>
+                    <div class="form-field">
+                        <label>Estado de Licencia:
+                        
+                            {% if empleados.Estado_Licencia == '1' %}
+                                Vigente
+                            {% elif empleados.Estado_Licencia == '2' %}
+                                Suspendida
+                            {% elif empleados.Estado_Licencia == '3' %}
+                                Vencida
+                            {% elif empleados.Estado_Licencia == '4' %}
+                                Invalida
+                            {% else %}
+                                {{ empleados.Estado_Licencia }}
+                            {% endif %}
+                        </label>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="form-field">
+                <label>Observaciones: {{ empleados.Observaciones }}</label>
+            </div>
+            <div style="text-align: center;">
+                <a class="back-button" href="{% url 'lista_empleados' %}">Volver a la Lista</a>
+            </div>
+        </div>
+    </div>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+{% endblock %}

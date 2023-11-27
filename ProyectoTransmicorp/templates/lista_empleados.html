@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+<h2>Listado de Empleados</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>DNI</th>
+      <th>Teléfono</th>
+      <th>Estado de Licencia</th>
+      <th colspan="3" style="text-align: center;">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for empleados in empleados %}
+      <tr>
+        <td>{{ empleados.Nombre }}</td>
+        <td>{{ empleados.DNI }}</td>
+        <td>{{ empleados.Telefono }}</td>
+        <td>
+          {% if empleados.Estado_Licencia == '1' %}
+            Vigente
+          {% elif empleados.Estado_Licencia == '2' %}
+            Suspendida
+          {% elif empleados.Estado_Licencia == '3' %}
+            Vencida
+          {% elif empleados.Estado_Licencia == '4' %}
+            Invalida
+          {% else %}
+            {{ empleados.Estado_Licencia }}
+          {% endif %}
+        </td>
+        <td>
+          <a class="btn-ver" href="{% url 'ver_empleados' empleados.pk %}">Ver detalles</a>
+        </td>
+        <td>
+          <a class="btn-editar" href="{% url 'editar_empleados' empleados.pk %}">Editar</a>
+        </td>
+        <td>
+          <a class="btn-eliminar" href="{% url 'eliminar_empleados' empleados.pk %}">Eliminar</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!-- Botón para crear nuevo empleado -->
+<a class="btn-crear" href="{% url 'crear_empleados' %}">Crear Nuevo Empleado</a>
+
+<!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista.css' %}">
+{% endblock %}

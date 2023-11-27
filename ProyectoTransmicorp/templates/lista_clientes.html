@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+ <h2>Listado de Clientes</h2>
+ <table class="table">
+   <thead>
+     <tr>
+       
+       <th>Tipo Ruc</th>
+       <th>Ruc Cliente</th>
+       <th>Nombre</th>
+       <th>Valoración</th>
+       <th>Tipo de Mercaderia</th>
+       <th colspan="3" style="text-align: center;">Acciones</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for client in cliente %}
+       <tr>
+         
+        
+         <td>{{ client.Tipo_Ruc }}</td>
+         <td>{{ client.Ruc_Clientes }}</td>
+         <td>{{ client.Cliente_Nombre }}</td>
+         <td>{{ client.Valoracion }}</td>
+         <td>{{ client.Tipo_Mercaderia }}</td>
+
+         <td>
+           <a class="btn-ver" href="{% url 'ver_clientes' client.pk %}">Ver detalles</a>
+         </td>
+         <td>
+           <a class="btn-editar" href="{% url 'editar_clientes' client.pk %}">Editar</a>
+         </td>
+         <td>
+           <a class="btn-eliminar" href="{% url 'eliminar_clientes' client.pk %}">Eliminar</a>
+         </td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+
+ <!-- Botón para crear un nuevo cliente -->
+
+
+<a class="btn-crear" href="{% url 'crear_clientes' %}">Crear Nuevo Cliente</a>
+
+
+
+
+ <!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista.css' %}">
+
+
+{% endblock %}
+

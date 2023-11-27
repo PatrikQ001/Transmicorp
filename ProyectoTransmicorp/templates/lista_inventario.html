@@ -1,0 +1,135 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+  <h2>Listado de Ítems dentro del Inventario</h2>
+  <div id="entries-control" class="text-right">
+    <label for="show-entries">Mostrar Registros:</label>
+    <select id="show-entries" onchange="mostrarEntradas(this.value)" class="form-control">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="all">All</option>
+    </select>
+  </div>
+
+  <input type="text" id="busqueda" placeholder="Buscar por nombre..." onkeyup="buscar()" class="form-control">
+
+  <table class="table" id="tabla-inventario">
+    <thead>
+      <tr>
+        <th>Número item</th>
+        <th>Nombre</th>
+        <th>Fecha de ingreso</th>
+        <th>Cantidad</th>
+        <th colspan="3" style="text-align: center;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for inventarios in inventario %}
+      <tr>
+        <td>{{ inventarios.Id_Inventario }}</td>
+        <td>{{ inventarios.NombreItem }}</td>
+        <td>{{ inventarios.FechaIngreso }}</td>
+        <td>{{ inventarios.Cantidad }}</td>
+        <td>
+          <a class="btn btn-primary" href="{% url 'ver_inventario' inventarios.pk %}">Ver detalles</a>
+        </td>
+        <td>
+          <a class="btn btn-warning" href="{% url 'editar_inventario' inventarios.pk %}">Editar</a>
+        </td>
+        <td>
+          <a class="btn btn-danger" href="{% url 'eliminar_inventario' inventarios.pk %}">Eliminar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Botón para crear nueva orden de trabajo -->
+  <div class="text-center">
+    <a class="btn btn-success" href="{% url 'crear_inventario' %}">Crear Nuevo Ítem dentro de Inventario</a>
+  </div>
+
+  <!-- Enlace al archivo CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Agregar jQuery y Bootstrap JS al final del documento -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    function buscar() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("busqueda");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tabla-inventario");
+      tr = table.getElementsByTagName("tr");
+
+      // Recorre todas las filas de la tabla y muestra solo las que coincidan con la consulta de búsqueda
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; // La segunda columna es la columna de nombre
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    function mostrarEntradas(numero) {
+      var table = document.getElementById("tabla-inventario");
+      var tr = table.getElementsByTagName("tr");
+
+      // Mostrar todas las filas
+      if (numero === "all") {
+        for (var i = 0; i < tr.length; i++) {
+          tr[i].style.display = "";
+        }
+      } else {
+        for (var i = 1; i < tr.length; i++) {
+          if (i <= parseInt(numero)) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+{% endblock %}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-ver-detalle">Ver detalles</button>
+
+<div class="modal fade" id="modal-ver-detalle" tabindex="-1" aria-labelledby="modal-ver-detalle-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-ver-detalle-label">Detalles del Item en el Inventario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="order-details">
+            <div class="column">
+                <p><strong>Id inventario:</strong> {{ inventario.Id_Inventario }}</p>
+                <p><strong>Nombre ítem:</strong> {{ inventario.Nombre }}</p>
+                <p><strong>Fecha de ingreso:</strong> {{ inventario.FechaIngreso }}</p>
+                <p><strong>Cantidad:</strong> {{ inventario.Cantidad }}</p>
+                <p><strong>Número e registro:</strong> {{ inventario.NumeroRegistro }}</p>
+                <p><strong>Descripción:</strong> {{ inventario.Descripcion }}</p>
+                <p><strong>Tiempo de Vida:</strong> {{ inventario.TiempoVida }}</p>
+                <p><strong>Ambiente:</strong> {{ inventario.Ambiente }}</p>
+                <p><strong>Estado:</strong> {{ inventario.Estado }}</p>
+                </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

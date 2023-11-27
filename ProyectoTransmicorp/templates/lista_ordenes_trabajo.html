@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+ <h2>Listado de Órdenes de Trabajo</h2>
+ <table class="table">
+   <thead>
+     <tr>
+       <th>RUC cliente</th>
+       <th>Origen</th>
+       <th>Destino</th>
+       <th>Fecha de Emision</th>
+       <th>Estado</th>
+       <th>Tipo_orden_de_trabajo</th>
+       <th colspan="3" style="text-align: center;">Acciones</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for orden_de_trabajo in ordenes_de_trabajo %}
+       <tr>
+         <td>{{ orden_trabajo.RUC_cliente }}</td>
+         <td>{{ orden_trabajo.Origen }}</td>
+         <td>{{ orden_trabajo.Destino }}</td>
+         <td>{{ orden_trabajo.Fecha_Emision }}</td>
+         <td>{{ orden_trabajo.Estado }}</td>
+         <td>{{ orden_trabajo.Tipo_orden_de_trabajo }}</td>
+         <td>
+           <a class="btn-ver" href="{% url 'ver_orden_trabajo' orden_trabajo.pk %}">Ver detalles</a>
+         </td>
+         <td>
+           <a class="btn-editar" href="{% url 'editar_orden_trabajo' orden_trabajo.pk %}">Editar</a>
+         </td>
+         <td>
+           <a class="btn-eliminar" href="{% url 'eliminar_orden_trabajo' orden_trabajo.pk %}">Eliminar</a>
+         </td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+ <!-- Botón para crear nueva orden de trabajo -->
+
+
+<a class="btn-crear" href="{% url 'crear_orden_trabajo' %}">Crear Nueva Orden de Trabajo</a>
+
+
+
+
+ <!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista.css' %}">
+
+
+{% endblock %}
+

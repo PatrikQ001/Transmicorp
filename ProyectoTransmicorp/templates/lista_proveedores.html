@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+ <h2>Listado de Proveedores</h2>
+ <table class="table">
+   <thead>
+     <tr>
+       <th>Nombre</th>
+       <th>Correo</th>
+       <th>Telefono</th>
+       <th>Valoracion</th>
+       <th colspan="3" style="text-align: center;">Acciones</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for proveedores in proveedor %}
+       <tr>
+         <td>{{ proveedores.Nombre }}</td>
+         <td>{{ proveedores.Correo }}</td>
+         <td>{{ proveedores.Telefono }}</td>
+         <td>{{ proveedores.Valoracion }}</td>
+         <td>
+           <a class="btn-ver" href="{% url 'ver_proveedor' proveedores.pk %}">Ver detalles</a>
+         </td>
+         <td>
+           <a class="btn-editar" href="{% url 'editar_proveedor' proveedores.pk %}">Editar</a>
+         </td>
+         <td>
+           <a class="btn-eliminar" href="{% url 'eliminar_proveedor' proveedores.pk %}">Eliminar</a>
+         </td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+<!-- Botón para crear nueva orden de trabajo -->
+
+
+<a class="btn-crear" href="{% url 'crear_proveedor' %}">Crear Nuevo Proveedor</a>
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista.css' %}">
+{% endblock %}

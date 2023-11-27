@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="page-container">
+      <a class="back-button" href="{% url 'lista_proveedores' %}">Volver a la Lista</a>
+      <div class="view-order">
+        <h2>Detalles del Proveedor</h2>
+        <div class="order-details">
+            <div class="column">
+                <p><strong>Nombre:</strong> {{ proveedor.Nombre }}</p>
+                <p><strong>Direccion:</strong> {{ proveedor.Direccion }}</p>
+                <p><strong>Correo:</strong> {{ proveedor.Correo }}</p>
+                <p><strong>Telefono:</strong> {{ proveedor.Telefono }}</p>
+                <p><strong>Valoracion:</strong> {{ proveedor.Valoracion }}</p>
+                <p><strong>Tipo de Producto:</strong> {{ proveedor.TipoProducto }}</p>
+                <p><strong>Documentacion Legal:</strong> {{ proveedor.nombre_archivo }}</p>
+                <!-- Mostrar otros campos del modelo aquí -->
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="page-container">
+      <a class="back-button" href="{% url 'lista_unidades' %}">Volver a la Lista</a>
+      <div class="view-order">
+        <h2>Información de la Unidad Vehicular</h2>
+        <div class="order-details">
+            <div class="column">
+                <p><strong>Placa:</strong> {{ unidad.Placa_Vehiculo }}</p>
+                <p><strong>Unidad:</strong> {{ unidad.Tipo_de_Vehiculo }}</p>
+                <p><strong>capacidad de Carga:</strong> {{ unidad.Capacidad_Carga }}</p>
+                <p><strong>Estado de la Unidad :</strong> {{ unidad.Estado_unidad }}</p>
+                <p><strong>Obvservaciones:</strong> {{ unidad.Observaciones }}</p>
+  
+                <!-- Mostrar otros campos del modelo aquí -->
+            </div>
+ 
+        </div>
+      </div>
+    </div>
+
+
+<!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+{% endblock %}

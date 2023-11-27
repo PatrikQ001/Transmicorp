@@ -1,0 +1,116 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+
+<div id="wrapper">
+    <!-- Inspiro Slider -->
+    <div id="slider" class="inspiro-slider arrows-large arrows-creative dots-creative" data-height-xs="360">
+        <!-- Slide 1 -->
+        <div class="slide background-overlay-one" style="background-image:url('images/logo.jpg');">
+            <div class="container col-md-offset-5">
+                <h2 data-caption-animate="fadeInUp">Mi perfil </h2>
+            </div>
+        </div>
+        <!-- end: Slide 1 -->
+    </div>
+    <!--end: Inspiro Slider -->
+
+    <!-- About us -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Información del usuario</th>
+                            </tr>
+                        </thead>
+                        <!--
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkbox col-md-offset-0">
+                                        <label>
+                                            <a href="#modify-data-modal" data-toggle="modal">Cambiar Datos</a>
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody> -->
+                    </table>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- Agregar la foto de perfil aquí -->
+                            <img src="{% static 'images/faq_man.png' %}" alt="Foto de perfil"
+                                class="img-fluid rounded-circle">
+                                <h5 class="card-title mb-2" style="font-size: 20px;">@{{user.username}}</h5>  
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                
+                                <p class="mb-3" style="font-size: 15px;"><span>{{ user.profile.nombres }} {{ user.profile.apellidos }}</span></p>
+                                <p class="mb-3" style="font-size: 15px;"><strong>Email:</strong> <span>{{ user.profile.email }}</span></p>
+                                <p class="mb-3" style="font-size: 15px;"><strong>Puesto de trabajo:</strong> <span>{{ user.profile.puestoTrabajo }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer-light">
+        <div class="copyright-content">
+            <div class="container">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Optional: Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/your-font-awesome-key.js" crossorigin="anonymous"></script>
+
+    <!-- Optional: Your custom scripts or additional dependencies -->
+</div>
+
+<!-- Modal for Modify Data -->
+
+<!--
+<div class="modal fade" id="modify-data-modal" tabindex="-1" role="dialog" aria-labelledby="modifyDataModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modifyDataModalLabel">Modificar Datos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Inserta aquí tu formulario para modificar datos</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+{% endblock %}

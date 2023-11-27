@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+ <h2>Listado de Facturas</h2>
+ <table class="table">
+   <thead>
+     <tr>
+       <th>Numero de Factura</th>
+       <th>Codigo de Orden de Trabajo</th>
+       <th>Fecha de Emision</th>
+       <th>Importe</th>
+       <th>Pago de detracción</th>
+       <th colspan="3" style="text-align: center;">Acciones</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for factura in factura %}
+       <tr>
+       	 <td>{{ factura.id|stringformat:"011d" }}</td>
+         <td>{{ factura.orden_de_trabajo }}</td>
+         <td>{{ factura.Fecha_Emision }}</td>
+         <td>{{ factura.Importe }}</td>
+         <td>{{ factura.Pago_de_detraccion }}</td>
+         <td>
+           <a class="btn-ver" href="{% url 'ver_factura' factura.pk %}">Ver detalles</a>
+         </td>
+         <td>
+           <a class="btn-editar" href="{% url 'editar_factura' factura.pk %}">Editar</a>
+         </td>
+         <td>
+           <a class="btn-eliminar" href="{% url 'eliminar_factura' factura.pk %}">Eliminar</a>
+         </td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+ <!-- Botón para crear nueva orden de trabajo -->
+
+
+<a class="btn-crear" href="{% url 'crear_factura' %}">Crear Nueva Factura</a>
+
+
+
+
+ <!-- Enlace al archivo CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/lista.css' %}">
+
+
+{% endblock %}
