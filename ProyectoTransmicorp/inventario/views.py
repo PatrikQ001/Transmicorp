@@ -3,8 +3,7 @@ from .models import inventario
 from .forms import inventarioForm
 from django.http import HttpResponse
 from django.template.loader import get_template
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
+
 
 
 
