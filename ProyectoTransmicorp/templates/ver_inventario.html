@@ -3,28 +3,36 @@
 
 {% block content %}
     <div class="page-container">
-      <a class="back-button" href="{% url 'lista_inventario' %}">Volver a la Lista</a>
-      <div class="view-order">
-        <h2>Detalles del Item en el Inventario</h2>
-        <div class="order-details">
-            <div class="column">
-                <p><strong>Id inventario:</strong> {{ inventario.Id_Inventario }}</p>
-                <p><strong>Nombre ítem:</strong> {{ inventario.Nombre }}</p>
-                <p><strong>Fecha de ingreso:</strong> {{ inventario.FechaIngreso }}</p>
-                <p><strong>Cantidad:</strong> {{ inventario.Cantidad }}</p>
-                <p><strong>Número e registro:</strong> {{ inventario.NumeroRegistro }}</p>
-                <p><strong>Descripción:</strong> {{ inventario.Descripcion }}</p>
-                <p><strong>Tiempo de Vida:</strong> {{ inventario.TiempoVida }}</p>
-                <p><strong>Ambiente:</strong> {{ inventario.Ambiente }}</p>
-                <p><strong>Estado:</strong> {{ inventario.Estado }}</p>
-                <!-- Mostrar otros campos del modelo aquí -->
-                <a class="print-button" href="{% url 'generar_pdf' inventario.pk %}">Imprimir PDF</a>
+        <a class="back-button" href="{% url 'lista_inventario' %}">Volver a la Lista</a>
+        <div class="view-order">
+            <h2 style="text-align: center; font-size: 24px; font-family: Helvetica, sans-serif;">Detalles del Item en el Inventario</h2>
+            <div class="order-details" style="border: 1px solid #000; padding: 10px; margin: 20px auto; width: 180%;">
+                <div class="column" style="display: flex;">
+                    <div style="width: 50%; background-color: #c0c0c0; padding: 10px;">
+                        <p><strong>Id inventario:</strong></p>
+                        <p><strong>Nombre ítem:</strong></p>
+                        <p><strong>Fecha de ingreso:</strong></p>
+                        <p><strong>Cantidad:</strong></p>
+                        <p><strong>Descripción:</strong></p>
+                        <p><strong>Tiempo de Vida:</strong></p>
+                        <p><strong>Ambiente:</strong></p>
+                        <p><strong>Estado:</strong></p>
+                    </div>
+                    <div style="width: 50%; padding: 10px;">
+                        <p>{{ inventario.Id_Inventario }}</p>
+                        <p>{{ inventario.Nombre }}</p>
+                        <p>{{ inventario.FechaIngreso }}</p>
+                        <p>{{ inventario.Cantidad }}</p>
+                        <p>{{ inventario.Descripcion }}</p>
+                        <p>{{ inventario.TiempoVida }}</p>
+                        <p>{{ inventario.Ambiente }}</p>
+                        <p>{{ inventario.Estado }}</p>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
     </div>
 
-
-<!-- Enlace al archivo CSS -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
 {% endblock %}

@@ -3,25 +3,32 @@
 
 {% block content %}
     <div class="page-container">
-      <a class="back-button" href="{% url 'lista_unidades' %}">Volver a la Lista</a>
-      <div class="view-order">
-        <h2>Información de la Unidad Vehicular</h2>
-        <div class="order-details">
-            <div class="column">
-                <p><strong>Placa:</strong> {{ unidad.Placa_Vehiculo }}</p>
-                <p><strong>Unidad:</strong> {{ unidad.Tipo_de_Vehiculo }}</p>
-                <p><strong>capacidad de Carga:</strong> {{ unidad.Capacidad_Carga }}</p>
-                <p><strong>Estado de la Unidad :</strong> {{ unidad.Estado_unidad }}</p>
-                <p><strong>Obvservaciones:</strong> {{ unidad.Observaciones }}</p>
-  
-                <!-- Mostrar otros campos del modelo aquí -->
+        <a class="back-button" href="{% url 'lista_unidades' %}">Volver a la Lista</a>
+        <div class="view-order">
+            <h2 style="text-align: center; font-size: 24px; font-family: Helvetica, sans-serif;">Información de la Unidad Vehicular</h2>
+            <div class="order-details">
+                <div class="column" style="display: flex;">
+                    <div style="width: 50%; background-color: rgb(118, 148, 98); padding: 10px;">
+                        <p><strong>Placa:</strong></p>
+                        <p><strong>Unidad</strong></p>
+                        <p><strong>capacidad de Carga:</strong></p>
+                        <p><strong>Estado de la Unidad:</strong></p>
+                        <p><strong>Observaciones:</strong></p>
+                   
+                    </div>
+                    <div style="width: 50%; padding: 10px;">
+                        <p>{{ unidad.Placa_Vehiculo }}</p>
+                        <p>{{ unidad.Tipo_de_Vehiculo }}</p>
+                        <p>{{ unidad.Capacidad_Carga }}</p>
+                        <p>{{ unidad.Estado_unidad }}</p>
+                        <p>{{ unidad.Observaciones }}</p>
+                    
+                    </div>
+                </div>
             </div>
- 
         </div>
-      </div>
     </div>
 
-
-<!-- Enlace al archivo CSS -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden2.css' %}">
 {% endblock %}
