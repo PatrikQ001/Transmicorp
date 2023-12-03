@@ -3,25 +3,51 @@
 
 {% block content %}
     <div class="page-container">
-      <a class="back-button" href="{% url 'lista_gasto' %}">Volver a la Lista</a>
-      <div class="view-order">
-        <h2>Detalles del Gasto</h2>
-        <div class="order-details">
-            <div class="column">
-                <p><strong>Código de Boleta:</strong> {{ gasto.Codigo_de_boleta }}</p>
-                <p><strong>Tipo de Gasto:</strong> {{ gasto.Tipo_de_gasto }}</p>
-                <p><strong>Area de Gasto:</strong> {{ gasto.Area_de_gasto }}</p>
-                <p><strong>Descripción:</strong> {{ gasto.Descripcion }}</p>
-                <p><strong>Monto Gastado:</strong> {{ gasto.Monto_gastado }}</p>
-                <p><strong>Fecha Boleta:</strong> {{ gasto.Fecha_boleta }}</p>
-                <p><strong>Documento Boleta:</strong> {{ gasto.Documento_boleta }}</p>
-                <!-- Mostrar otros campos del modelo aquí -->
+       
+        <div class="view-order">
+            <h2>Detalles del Gasto</h2>
+            <div class="order-details">
+                <table class="order-table">
+                    <tr>
+                        <td><strong>Código de Boleta:</strong></td>
+                        <td>{{ gasto.Codigo_de_boleta }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tipo de Gasto:</strong></td>
+                        <td>{{ gasto.Tipo_de_gasto }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Area de Gasto:</strong></td>
+                        <td>{{ gasto.Area_de_gasto }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Descripción:</strong></td>
+                        <td>{{ gasto.Descripcion }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monto Gastado:</strong></td>
+                        <td>{{ gasto.Monto_gastado }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fecha Boleta:</strong></td>
+                        <td>{{ gasto.Fecha_boleta }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Documento Boleta:</strong></td>
+                        <td>{{ gasto.Documento_boleta }}</td>
+                    </tr>
+                    <!-- Mostrar otros campos del modelo aquí -->
+                </table>
             </div>
         </div>
+        <div class="image-container">
+          <img src="{% static 'images/icon_details.png' %}" alt="Imagen" width="400" height="auto" > <!-- La imagen que se mostrará al lado derecho de la pantalla -->
       </div>
+      <div class="button-container">
+          <a class="back-button" href="{% url 'lista_gasto' %}">Volver a la Lista</a>
+     </div>
     </div>
 
-
-<!-- Enlace al archivo CSS -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
 {% endblock %}

@@ -4,6 +4,7 @@
 {% block content %}
 <div class="delete-order">
   <h2>Eliminar Proveedor</h2>
+  <img src="{% static 'images/delete_img.png' %}" alt="Imagen">
   <p>¿Estás seguro de que deseas eliminar este Proveedor?</p>
   <p>Nombre proveedor: {{ proveedor.Nombre }}</p>
   <!-- Mostrar otros campos del modelo aquí -->
@@ -19,5 +20,5 @@
 
 
 <!-- Enlace al archivo CSS -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/eliminar_orden.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/green_eliminar.css' %}">
 {% endblock %}

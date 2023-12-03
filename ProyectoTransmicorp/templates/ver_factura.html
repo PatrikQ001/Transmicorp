@@ -3,32 +3,58 @@
 
 {% block content %}
     <div class="page-container">
-      <a class="back-button" href="{% url 'lista_facturas' %}">Volver a la Lista</a>
-      <div class="view-order">
-        <h2>Detalles de la Factura {{ factura.id|stringformat:"011d" }}</h2>
-        <div class="order-details">
-            <div class="row">
-              <div class="col-md-6">
-                <p><strong>Orden de trabajo(Codigo OT):</strong> {{ factura.Orden_de_trabajo }}</p>
-                <p><strong>Id del cliente:</strong> {{ factura.Id_cliente }}</p>
-                <p><strong>IGV:</strong> {{ factura.IGV }}</p>
-                <p><strong>Pago de Detracción:</strong> {{ factura.Pago_de_detraccion }}</p>              
-              </div>
-              <div class="col-md-6">
-                <p><strong>Fecha de Emisión:</strong> {{ factura.Fecha_Emision }}</p>
-                <p><strong>Importe:</strong> {{ factura.Importe }}</p>    
-                <p><strong>Detracción:</strong> {{ factura.Detraccion }}</p>
-                <p><strong>Documento factura:</strong> {{ factura.Documento_factura }}</p>
-              </div>
-                
-                
-                <!-- Mostrar otros campos del modelo aquí -->
+        
+        <div class="view-order">
+            <h2>Detalles de la Factura {{ factura.id|stringformat:"011d" }}</h2>
+            <div class="order-details">
+                <table class="order-table">
+                  <tr>
+                    <td ><div >Item</div> </td>
+                    <td> Detalle</td></tr>
+                  <tr>
+                    <tr>
+                        <td><strong>Orden de trabajo(Codigo OT):</strong></td>
+                        <td>{{ factura.Orden_de_trabajo }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Id del cliente:</strong></td>
+                        <td>{{ factura.Id_cliente }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IGV:</strong></td>
+                        <td>{{ factura.IGV }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pago de Detracción:</strong></td>
+                        <td>{{ factura.Pago_de_detraccion }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fecha de Emisión:</strong></td>
+                        <td>{{ factura.Fecha_Emision }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Importe:</strong></td>
+                        <td>{{ factura.Importe }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Detracción:</strong></td>
+                        <td>{{ factura.Detraccion }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Documento factura:</strong></td>
+                        <td>{{ factura.Documento_factura }}</td>
+                    </tr>
+                    <!-- Mostrar otros campos del modelo aquí -->
+                </table>
             </div>
         </div>
+        <div class="image-container">
+          <img src="{% static 'images/icon_details.png' %}" alt="Imagen" width="400" height="auto" > <!-- La imagen que se mostrará al lado derecho de la pantalla -->
       </div>
+      <div class="button-container">
+          <a class="back-button" href="{% url 'lista_factura' %}">Volver a la Lista</a>
+     </div>
     </div>
-
-
-<!-- Enlace al archivo CSS -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
 {% endblock %}

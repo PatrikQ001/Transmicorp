@@ -5,6 +5,7 @@
 {% block content %}
 <div class="delete-order">
   <h2>Eliminar ítem dentro de Inventario</h2>
+  <img src="{% static 'images/delete_img.png' %}" alt="Imagen">
   <p>¿Estás seguro de que deseas eliminar esta Factura?</p>
   <p>Numero de ítem: {{ inventario.Id_Inventario }}</p>
   <!-- Mostrar otros campos del modelo aquí -->
@@ -20,5 +21,5 @@
 
 
 <!-- Enlace al archivo CSS -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/eliminar_orden.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/green_eliminar.css' %}">
 {% endblock %}

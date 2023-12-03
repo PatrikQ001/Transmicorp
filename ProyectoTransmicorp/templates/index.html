@@ -37,6 +37,7 @@
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style_green.css' %}">
     {% block head %}
     {% endblock %}
       <!--<link rel="stylesheet" type="text/css" href="{% static 'css/formulario.css' %}">-->
@@ -101,8 +102,9 @@
       <div class="pcoded-overlay-box"></div>
       <div class="pcoded-container navbar-wrapper">
           <nav class="navbar header-navbar pcoded-header">
-              <div class="navbar-wrapper">
-                  <div class="navbar-logo">
+              <div class="navbar-wrapper navbar-custom">
+                  <div class="navbar-logo navbar-custom "> <!-- ESTILO. -->
+
                       <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
                           <i class="ti-menu"></i>
                       </a>
@@ -118,20 +120,20 @@
                           </div>
                       </div>
                       <a href="index.html">
-                          <img class="img-fluid" src="{% static 'images/logo-transmicorp.png' %}" alt="Theme-Logo" />
+                          <img class="img-fluid" src="{% static 'images/logo_.png' %}" alt="Theme-Logo" width="70" height="auto" />
                       </a>
                       <a class="mobile-options waves-effect waves-light">
                           <i class="ti-more"></i>
                       </a>
                   </div>
                 
-                  <div class="navbar-container container-fluid">
-                      <ul class="nav-left">
+                  <div class="navbar-container container-fluid  navbar-custom">
+                      <ul class="nav-left navbar-custom">
                           <li>
                               <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
                           </li>
-                          <li class="header-search">
-                              <div class="main-search morphsearch-search">
+                          <li class="header-search navbar-custom">
+                              <div class="main-search morphsearch-search navbar-custom">
                                   <div class="input-group">
                                       <span class="input-group-addon search-close"><i class="ti-close"></i></span>
                                       <input type="text" class="form-control">
@@ -146,7 +148,7 @@
                           </li>
                       </ul>
                       <ul class="nav-right">
-                          <li class="header-notification">
+                          <li class="header-notification"> <!-- ESTILO. -->
                               <a href="#!" class="waves-effect waves-light">
                                   <i class="ti-bell"></i>
                                   <span class="badge bg-c-red"></span>
@@ -188,6 +190,7 @@
                                   </li>
                               </ul>
                           </li>
+                          
                           <li class="user-profile header-notification">
                               <a href="#!" class="waves-effect waves-light">
                                   <img src="{% static 'images/avatar-blank.jpg' %}" class="img-radius" alt="User-Profile-Image">

@@ -6,27 +6,61 @@
         <div class="center-container">
             <div class="view-order">
                 <h2>Datos del Cliente</h2>
+        
                 <div class="order-details">
-                    <div class="column">
-                        <p><strong>Tipo RuC:</strong> {{ cliente.Tipo_Ruc }}</p>
-                        <p><strong>RuC Cliente:</strong> {{ cliente.Ruc_Clientes }}</p>
-                        <p><strong>Nombre :</strong> {{ cliente.Cliente_Nombre }}</p>
-                        <p><strong>Apellido :</strong> {{ cliente.Cliente_Apellido }}</p>
-                        <p><strong>Telefono:</strong> {{ cliente.Cliente_telefono }}</p>
-                        <p><strong>Email:</strong> {{ cliente.Cliente_email }}</p>
-                        <p><strong>Direccion:</strong> {{ cliente.Cliente_direccion }}</p>
-                        <p><strong>Valoracion:</strong> {{ cliente.Valoracion }}</p>
-                        <p><strong>Tipo de Mercaderia:</strong> {{ cliente.Tipo_Mercaderia }}</p>
-                        <!-- Mostrar otros campos del modelo aquí -->
-                    </div>
+               
+                    <table class="order-table">
+                        <tr>
+                            <td ><div >Item</div> </td>
+                            <td> Detalle</td></tr>
+                        <tr>
+                            <td><strong>Tipo RUC:</strong></td>
+                            <td>{{ cliente.Tipo_Ruc }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RUC Cliente:</strong></td>
+                            <td>{{ cliente.Ruc_Clientes }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nombre:</strong></td>
+                            <td>{{ cliente.Cliente_Nombre }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apellido:</strong></td>
+                            <td>{{ cliente.Cliente_Apellido }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Telefono:</strong></td>
+                            <td>{{ cliente.Cliente_telefonos }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email:</strong></td>
+                            <td>{{ cliente.Cliente_email }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Direccion:</strong></td>
+                            <td>{{ cliente.Cliente_direccion }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Valoracion:</strong></td>
+                            <td>{{ cliente.Valoracion }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo de Mercaderia:</strong></td>
+                            <td>{{ cliente.Tipo_Mercaderia }}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-            <div class="center-button">
-                <a class="back-button" href="{% url 'lista_clientes' %}">Volver a la Lista</a>
+            <div class="image-container">
+                <img src="{% static 'images/icon_details.png' %}" alt="Imagen" width="400" height="auto" > <!-- La imagen que se mostrará al lado derecho de la pantalla -->
             </div>
+            <div class="button-container">
+                <a class="back-button" href="{% url 'lista_unidades' %}">Volver a la Lista</a>
+           </div>
         </div>
     </div>
 
     <!-- Enlace al archivo CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/green_ver.css' %}">
 {% endblock %}

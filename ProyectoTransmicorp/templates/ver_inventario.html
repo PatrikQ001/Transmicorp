@@ -2,37 +2,53 @@
 {% load static %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/green_ver.css' %}">
     <div class="page-container">
-        <a class="back-button" href="{% url 'lista_inventario' %}">Volver a la Lista</a>
+        
         <div class="view-order">
-            <h2 style="text-align: center; font-size: 24px; font-family: Helvetica, sans-serif;">Detalles del Item en el Inventario</h2>
-            <div class="order-details" style="border: 1px solid #000; padding: 10px; margin: 20px auto; width: 180%;">
-                <div class="column" style="display: flex;">
-                    <div style="width: 50%; background-color: #c0c0c0; padding: 10px;">
-                        <p><strong>Id inventario:</strong></p>
-                        <p><strong>Nombre ítem:</strong></p>
-                        <p><strong>Fecha de ingreso:</strong></p>
-                        <p><strong>Cantidad:</strong></p>
-                        <p><strong>Descripción:</strong></p>
-                        <p><strong>Tiempo de Vida:</strong></p>
-                        <p><strong>Ambiente:</strong></p>
-                        <p><strong>Estado:</strong></p>
-                    </div>
-                    <div style="width: 50%; padding: 10px;">
-                        <p>{{ inventario.Id_Inventario }}</p>
-                        <p>{{ inventario.Nombre }}</p>
-                        <p>{{ inventario.FechaIngreso }}</p>
-                        <p>{{ inventario.Cantidad }}</p>
-                        <p>{{ inventario.Descripcion }}</p>
-                        <p>{{ inventario.TiempoVida }}</p>
-                        <p>{{ inventario.Ambiente }}</p>
-                        <p>{{ inventario.Estado }}</p>
-                    </div>
-                </div>
+            <h2>Detalles del Item en el Inventario</h2>
+            <div class="order-details">
+                <table class="order-table">
+                    <tr>
+                        <td><strong>Id inventario:</strong></td>
+                        <td>{{ inventario.Id_Inventario }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nombre ítem:</strong></td>
+                        <td>{{ inventario.Nombre }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fecha de ingreso:</strong></td>
+                        <td>{{ inventario.FechaIngreso }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cantidad:</strong></td>
+                        <td>{{ inventario.Cantidad }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Descripción:</strong></td>
+                        <td>{{ inventario.Descripcion }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tiempo de Vida:</strong></td>
+                        <td>{{ inventario.TiempoVida }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ambiente:</strong></td>
+                        <td>{{ inventario.Ambiente }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Estado:</strong></td>
+                        <td>{{ inventario.Estado }}</td>
+                    </tr>
+                </table>
             </div>
+            <div class="image-container">
+                <img src="{% static 'images/icon_details.png' %}" alt="Imagen" width="400" height="auto" > <!-- La imagen que se mostrará al lado derecho de la pantalla -->
+            </div>
+            <div class="button-container">
+                <a class="back-button" href="{% url 'lista_inventario' %}">Volver a la Lista</a>
+           </div>
         </div>
     </div>
-
-    <!-- Enlace al archivo CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/ver_orden.css' %}">
 {% endblock %}
